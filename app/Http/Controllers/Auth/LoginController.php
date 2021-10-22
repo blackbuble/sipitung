@@ -53,7 +53,7 @@ class LoginController extends Controller
 
         if($this->guard()->validate($this->credentials($request))) {
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'isActive' => 1])) {
-                // return redirect()->intended('dashboard');
+                 return redirect()->intended('home');
             }  else {
                 $this->incrementLoginAttempts($request);
                 /* return response()->json([
