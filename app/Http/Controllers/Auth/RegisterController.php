@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Str;
+use App\Models\UserComission;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,10 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+	const REGISTER = 1500000;
+	const PER_BONUS = 10;
+	const PER_LEVEL = 2;
+	const LEVEL = 0;
     /**
      * Where to redirect users after registration.
      *
@@ -87,18 +91,71 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $referrer = User::whereUsername(session()->pull('referrer'))->first();
-		//found parent
-		//dd($referrer);
 		
-        return User::create([
-            'name'        => $data['name'],
+		if($referrer != null){
+			$join = self::REGISTER*(self::PER_BONUS/100);	
+			$bonus = self::REGISTER*(self::PER_LEVEL/100);	
+			$level = $referrer->level+1;
+			//join array
+			$user_sponsor = User::where(['id' => $referrer->id])->first();
+					//dd($user_sponsor);
+			if ($user_sponsor->level <1){
+				$sponsor = $referrer->id;	
+				$total_sponsor = count([$sponsor]);
+			}else{
+				
+				$sponsor = ltrim($user_sponsor->sponsor .','. $referrer->id,',');
+				$total_sponsor = count([$sponsor]);
+				
+			}
+			
+			//$sponsor =  $user;
+		}else{
+			$level = 0;
+			$join = 0;
+			$sponsor = null;
+		}
+		
+         $user = User::create([
+			'name'        => $data['name'],
             //'username'    => $data['username'],
             'username'    => Str::random(6),
             'email'       => $data['email'],
             'referrer_id' => $referrer ? $referrer->id : null,
             'password'    => Hash::make($data['password']),
-			'level'		  => null,	
+			'level'		  => $level,	
+			'sponsor'	  => $sponsor,
         ]);
+		
+		if($join != 0){
+		$bonus_level = UserComission::create([
+				'user_id' 	=> $referrer->id,	
+				'from_id' 	=> $user->id,	
+				'note' 		=> 'Join Bonus',
+				'amount' 	=> $join,
+		]);
+		//dd($total_sponsor);
+		if($user->level > 1 ){
+		
+		
+			$my_sponsor = preg_replace ( '/,[0-9\.]*$/' , '' , $sponsor);
+			$elements = explode(",", $my_sponsor);
+			//dd($elements);
+				foreach($elements as $element) {
+					$join_level = new UserComission();
+					$join_level->user_id 	= $element;
+					$join_level->from_id 	= $user->id;
+					$join_level->note 		= 'Bonus Level';
+					$join_level->amount 	= $bonus;
+					$join_level->save();	
+				}  
+		}
+		
+		
+		}
+		
+		//event(new \App\Events\UserReferred(request()->cookie('ref'), $user));
+		return $user;
     }
 
     /**

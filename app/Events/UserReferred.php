@@ -13,15 +13,17 @@ use Illuminate\Queue\SerializesModels;
 class UserReferred
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+	public $user, $referralId;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($referralId,$user)
     {
         //
+		$this->$referralId = $referralId;;
+		$this->user = $user;
     }
 
     /**

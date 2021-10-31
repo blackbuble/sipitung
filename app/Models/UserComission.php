@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserComission extends Model
 {
     use HasFactory;
+	protected $fillable = [
+        'user_id',
+        'from_id',
+		'note',
+		'amount',
+    ];
 }

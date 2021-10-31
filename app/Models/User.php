@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
 		'level',
+		'sponsor',
 		'isActive',
     ];
 
@@ -82,4 +83,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(User::class, 'referrer_id', 'id');
     }
+	
+	public function getNameInitials()
+	{
+		$name = $this->name;
+		$name_array = explode(' ',trim($name));
+
+		$firstWord = $name_array[0];
+		$lastWord = $name_array[count($name_array)-1];
+
+		return mb_substr($firstWord[0],0,1)."".mb_substr($lastWord[0],0,1);
+	}
 }

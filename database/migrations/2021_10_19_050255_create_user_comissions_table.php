@@ -16,7 +16,8 @@ class CreateUserComissionsTable extends Migration
         Schema::create('user_comissions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('program_id');
+            $table->integer('from_id');
+            $table->string('note');
             $table->string('amount');
             $table->timestamps();
         });
