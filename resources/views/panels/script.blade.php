@@ -1,6 +1,4 @@
-@if (in_array(Route::currentRouteName(), ['/','login', 'show_register', 'password.request', 'show_reset_form']))
-
-@elseif (in_array(Route::currentRouteName(), ['home']))
+@if (in_array(Route::currentRouteName(), ['home']))
 <!-- Required vendors -->
 <script src="{{ asset('vendor/global/global.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
