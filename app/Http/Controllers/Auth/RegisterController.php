@@ -156,7 +156,7 @@ class RegisterController extends Controller
 		
 		}
 		
-		$valid = self::REGISTER+rand(10000,100000);
+		$valid = self::REGISTER+rand(1000,10000);
 		
 		$title = "Selamat Bergabung dengan komunitas SiPitung";
 		$maildata =  ['name' => $user->name, 'email' => $user->email, 'valid' => $valid];
