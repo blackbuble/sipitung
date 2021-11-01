@@ -196,8 +196,8 @@
                   <tr>
                     <td style="text-align: left;">
                     <br>
-                      <p>Hai {{$maildata->name}}, tinggal selangkah lagi kamu tergabung di komunitas SiPitung. Segera lunasi biaya pendaftaran sebesar</p> 
-					  <h1 style="text-align:center;">Rp 1.500.000</h1>
+                      <p>Hai {{$maildata['name']}}, tinggal selangkah lagi kamu tergabung di komunitas SiPitung. Segera lunasi biaya pendaftaran sebesar</p> 
+					  <h1 style="text-align:center;">{{rupiah($maildata['valid'])}}</h1>
 					  <p>Pembayaran dapat dilakukan melalui salah satu bank berikut</p>
 					  
 					     <table cellspacing="0" cellpadding="0" class="force-full-width" width="100%">

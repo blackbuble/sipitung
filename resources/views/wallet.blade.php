@@ -199,7 +199,7 @@
 											<div id="Buy-Coin" class="tab-pane active">	
 												<div class="row">
 													<div class="basic-form">
-														<p> 1 APENFT = {{ $buy }}</p>
+														<p> 1 APENFT = $ {{ $buy }}</p>
 														<form>
 															<div class="form-group">
 																<div class="input-group input-group-lg">
@@ -221,7 +221,7 @@
 											<div id="Sell-Coin" class="tab-pane">	
 												<div class="row">
 													<div class="basic-form">
-														<p> 1 APENFT = {{ $sell }}</p>
+														<p> 1 APENFT = $ {{ $sell }}</p>
 														<form>
 															<div class="form-group">
 																<div class="input-group input-group-lg">

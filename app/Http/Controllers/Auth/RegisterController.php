@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Str;
 use App\Models\UserComission;
+use App\Mail\RegistrationMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
