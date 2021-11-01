@@ -154,7 +154,13 @@ class RegisterController extends Controller
 		
 		}
 		
+		$valid = self::REGISTER+rand(10000,100000);
+		
+		$title = "Selamat Bergabung dengan komunitas SiPitung";
+		$maildata =  ['name' => $user->name, 'email' => $user->email, 'valid' => $valid];
+		
 		//event(new \App\Events\UserReferred(request()->cookie('ref'), $user));
+		Mail::to($user->email)->send(new RegistrationMail($title,$maildata));
 		return $user;
     }
 
