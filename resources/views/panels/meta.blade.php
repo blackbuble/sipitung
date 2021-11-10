@@ -30,4 +30,8 @@
 <meta property="og:image:height" content="300">
 <link itemprop="thumbnailUrl" href="https://sipitung88.com/images/logsipit.png">
 
-  		
+{{-- end OG --}}
+<link rel="icon" href="https://sipitung88.com/images/logsipit.png" sizes="32x32"/>
+<link rel="icon" href="https://sipitung88.com/images/logsipit.png" sizes="192x192"/>
+<link rel="apple-touch-icon" href="https://sipitung88.com/images/logsipit.png"/>
+<meta name="msapplication-TileImage" content="https://sipitung88.com/images/logsipit.png"/>  		
