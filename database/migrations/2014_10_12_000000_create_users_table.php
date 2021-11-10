@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->boolean('isActive')->default(0);
             $table->integer('level')->nullable();
             $table->string('sponsor')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('ktp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

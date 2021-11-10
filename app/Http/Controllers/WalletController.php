@@ -28,7 +28,7 @@ class WalletController extends Controller
         $nft = $this->getNFTPrice();
 		$sell = number_format($nft->RAW->NFT->IDR->PRICE-($nft->RAW->NFT->IDR->PRICE*5/100),8);
 		$buy = number_format($nft->RAW->NFT->IDR->PRICE+($nft->RAW->NFT->IDR->PRICE*5/100),8);
-		//dd($sell);
+		//dd($nft->RAW->NFT->IDR->PRICE);
 		return view('wallet', compact(['nft', 'sell', 'buy']));
     }
 

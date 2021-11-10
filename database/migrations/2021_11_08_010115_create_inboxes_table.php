@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalletsTable extends Migration
+class CreateInboxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallets', function (Blueprint $table) {
+        Schema::create('inboxes', function (Blueprint $table) {
             $table->id();
-            $table->string('bank_name');
-            $table->string('bank_account');
-            $table->string('bank_account_holder');
-            $table->string('crypto_wallet');
-            $table->string('actual_fund_hold');
-            $table->string('actual_crypto_hold');
+            $table->integer('from');
+            $table->integer('to');
+            $table->string('note');
+            $table->integer('status_id');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('inboxes');
     }
 }
