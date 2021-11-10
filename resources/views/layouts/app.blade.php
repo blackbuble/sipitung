@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+	@include('panels.meta')
 	 <!-- Styles -->
     @include('panels.style')
    

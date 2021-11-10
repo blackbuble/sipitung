@@ -113,9 +113,11 @@ class RegisterController extends Controller
 			
 			//$sponsor =  $user;
 		}else{
-			$level = 0;
-			$join = 0;
-			$sponsor = null;
+			//return to top account
+			$level = 1;
+			$join = self::REGISTER*(self::PER_BONUS/100);
+			$bonus = self::REGISTER*(self::PER_LEVEL/100);	
+			$sponsor = 1;
 		}
 		
          $user = User::create([
