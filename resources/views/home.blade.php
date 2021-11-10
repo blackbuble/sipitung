@@ -334,6 +334,7 @@ M3221 3377 c-74 -23 -139 -134 -111 -187 21 -39 80 -19 80 26 0 39
 				
 			</div>	
 </div>
+{{--
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -369,4 +370,5 @@ M3221 3377 c-74 -23 -139 -134 -111 -187 21 -39 80 -19 80 26 0 39
         </div>
     </div>
 </div>
+--}}
 @endsection
