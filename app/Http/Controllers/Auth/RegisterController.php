@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Str;
 use App\Models\UserComission;
+use Spatie\Permission\Models\Role;
 use App\Mail\RegistrationMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -118,22 +119,28 @@ class RegisterController extends Controller
 			$join = self::REGISTER*(self::PER_BONUS/100);
 			$bonus = self::REGISTER*(self::PER_LEVEL/100);	
 			$sponsor = 1;
+			//$referrer = 1;
 		}
+		
+		 $role = Role::where('name', 'User')->first();	
 		
          $user = User::create([
 			'name'        => $data['name'],
             //'username'    => $data['username'],
             'username'    => Str::random(6),
             'email'       => $data['email'],
-            'referrer_id' => $referrer ? $referrer->id : null,
+            'referrer_id' => $referrer ? $referrer->id : 1,
             'password'    => Hash::make($data['password']),
 			'level'		  => $level,	
 			'sponsor'	  => $sponsor,
         ]);
 		
+		$user->assignRole($role);
+		
 		if($join != 0){
 		$bonus_level = UserComission::create([
-				'user_id' 	=> $referrer->id,	
+				//'user_id' 	=> $referrer->id,	
+				'user_id' 	=> $user->referrer_id,	
 				'from_id' 	=> $user->id,	
 				'note' 		=> 'Join Bonus',
 				'amount' 	=> $join,
