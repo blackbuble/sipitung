@@ -14,6 +14,18 @@
 							<li><a href="market-capital.html">Market Capital</a></li>
 						</ul>
                     </li>
+					@if(Auth::user()->hasRole('Admin'))
+						<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-television"></i>
+							<span class="nav-text">Users</span>
+						</a>
+						</li>
+						<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-television"></i>
+							<span class="nav-text">Roles</span>
+						</a>
+						</li>
+					@endif
 					{{--				
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-television"></i>

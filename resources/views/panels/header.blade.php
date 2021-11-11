@@ -180,7 +180,11 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
 									<div class="header-info">
 										<span class="text-black">Hello, <strong>{{Auth::user()->name}}</strong></span>
-										<p class="fs-12 mb-0">Super Admin</p>
+										@forelse (Auth::user()->roles->take(1) as $role)
+											<p class="fs-12 mb-0">{{$role->name}}</p>
+										@empty
+											<p class="fs-12 mb-0">Not assigned</p>
+										@endforelse
 									</div>
                                     <img src="https://i.pravatar.cc/100?u=fake@pravatar.co" width="20" alt=""/>
 
