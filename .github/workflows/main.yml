@@ -24,14 +24,13 @@ jobs:
         run: composer update --ignore-platform-reqs
       - name: Generate key
         run: php artisan key:generate 
-# copy source code ke server menggunakan ssh
-      - name: Copy repository contents via scp
-        uses: appleboy/scp-action@master
+      - uses: actions/checkout@v2
+      - name: Upload ftp
+        uses: sebastianpopp/ftp-action@releases/v2
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: 22
-          #password: ${{ secrets.PASSWORD }}
-          key: ${{ secrets.KEY }}
-          source: "."
-          target: "public_html/apps/"
+         host: ${{ secrets.HOST }}
+         user: ${{ secrets.USERNAME }}
+         password: ${{ secrets.PASSWORD }}
+         #localDir: "dist"
+         remoteDir: "apps"
+         #options: "--delete --asci"
