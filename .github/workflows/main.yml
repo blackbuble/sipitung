@@ -27,12 +27,12 @@ jobs:
 # copy source code ke server menggunakan ssh
       - name: Copy repository contents via scp
         uses: appleboy/scp-action@master
-        env:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: 22
-          PASSWORD: ${{ secrets.PASSWORD }}
-          KEY: ${{ secrets.KEY }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: 22
+          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.KEY }}
         with:
           source: "."
           target: "public_html/apps/"
