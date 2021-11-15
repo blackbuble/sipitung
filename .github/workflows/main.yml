@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: 22
-          password: ${{ secrets.PASSWORD }}
+          #password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.KEY }}
           source: "."
           target: "public_html/apps/"
