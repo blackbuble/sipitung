@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class CoinController extends Controller
 {
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +24,8 @@ class CoinController extends Controller
     public function index()
     {
         //
+		//return view('coin', compact(['nft', 'sell', 'buy']));
+		return view('coin');
     }
 
     /**
