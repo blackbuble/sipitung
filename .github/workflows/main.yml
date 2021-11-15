@@ -32,5 +32,5 @@ jobs:
          user: ${{ secrets.USERNAME }}
          password: ${{ secrets.PASSWORD }}
          #localDir: "dist"
-         remoteDir: "apps"
+         remoteDir: "apps/"
          #options: "--delete --asci"
